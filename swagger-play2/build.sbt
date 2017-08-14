@@ -11,7 +11,7 @@ libraryDependencies ++= Seq(
   "com.fasterxml.jackson.module"  %% "jackson-module-scala"       % "2.8.9",
   "org.slf4j"          % "slf4j-api"                  % "1.7.21",
   "io.swagger"         % "swagger-core"               % "1.5.16",
-  "io.swagger"        %% "swagger-scala-module"       % "1.0.5-SNAPSHOT",
+  "io.swagger"        %% "swagger-scala-module"       % "1.0.4",
   "com.typesafe.play" %% "routes-compiler"            % "2.6.0",
   "com.typesafe.play" %% "play-ebean"                 % "4.0.2"            % "test",
   "org.specs2"        %% "specs2-core"                % "3.8.7"            % "test",
