@@ -3,10 +3,12 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+#GET     /                           controllers.Application.index
 
 # prefix must match `play.assets.urlPrefix`
 GET /assets/*file           controllers.Assets.at(file)
 GET /versionedAssets/*file  controllers.Assets.versioned(file)
 
-GET     /swagger.json           controllers.ApiHelpController.getResources
+GET     /swagger          controllers.ApiHelpController.getResources
+
+GET     /location/:text         controllers.Application.getLocationsByText(text)
