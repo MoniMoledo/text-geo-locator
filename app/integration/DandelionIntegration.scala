@@ -1,8 +1,7 @@
 package integration
 
 import com.google.inject.Inject
-import play.api.libs.functional.syntax._
-import play.api.libs.json.{JsObject, _}
+import play.api.libs.json._
 import play.api.libs.ws.{WSClient, WSRequest, WSResponse}
 import play.api.mvc.Controller
 
@@ -34,7 +33,7 @@ class DandelionIntegration @Inject() (ws: WSClient) extends Controller{
     return futureResult
   }
 
-  def jsonParser(text : String): String = {
+  def jsonParser(text : String): (String, String) = {
 
     val json = Json.parse(text)
 
@@ -46,12 +45,12 @@ class DandelionIntegration @Inject() (ws: WSClient) extends Controller{
       for(e <- entities){
        val typeJsArray = typeList.as[JsArray].value
        for(typeValue <- typeJsArray) {
-         if (typeValue.toString().contains("Location")) {
-           return e.toString()
-          }
-        }
+         if(typeValue.toString().contains("City"))  return (e.toString(), "City")
+         if(typeValue.toString().contains("AdministrativeRegion")) return (e.toString(), "State")
+         if(typeValue.toString().contains("Country"))   return (e.toString(), "Country")
+         }
+       }
       }
-    }
-    return "no place found =("
+    return ("No place found", "Not a place")
   }
 }

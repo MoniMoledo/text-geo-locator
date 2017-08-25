@@ -20,6 +20,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
      val futureResult = dandelion.extractEntities(text)
 
-     futureResult.map(i => Ok("Got result: " + dandelion.jsonParser(i.body)))
+     futureResult.map(i => Ok("Got result: " + dandelion.jsonParser(i.body).toString()))
    }
 }
