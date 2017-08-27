@@ -38,20 +38,20 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
 
     val json = Json.parse(text)
 
-    val annotations = (json \ "annotations")
-    val allTypes = annotations.\\("types")
-    val entities = annotations.\\("spot")
+    val annotations = (json \ "annotations").as[JsArray]
 
-    for(typeList <- allTypes){
-      for(e <- entities){
-       val typeJsArray = typeList.as[JsArray].value
-       for(typeValue <- typeJsArray) {
-         if(typeValue.toString().contains("City"))  return (e.toString(), "City")
-         if(typeValue.toString().contains("AdministrativeRegion")) return (e.toString(), "State")
-         if(typeValue.toString().contains("Country"))   return (e.toString(), "Country")
-         }
-       }
+    for(annotation <- annotations.value){
+
+      val typeJsArray =  (annotation \\ "types")
+      val locationTitle = (annotation \ "title").as[String]
+
+      for(typeValue <- typeJsArray) {
+        if(typeValue.toString().contains("City"))  return (locationTitle, "City")
+        if(typeValue.toString().contains("AdministrativeRegion")) return (locationTitle, "State")
+        if(typeValue.toString().contains("Country"))   return (locationTitle, "Country")
       }
+    }
+
     return ("No place found", "Not a place")
   }
 }
