@@ -1,6 +1,7 @@
 package integration
 
 import com.google.inject.Inject
+import play.api.Configuration
 import play.api.libs.json._
 import play.api.libs.ws.{WSClient, WSRequest, WSResponse}
 import play.api.mvc.Controller
@@ -10,7 +11,7 @@ import scala.concurrent.Future
 /**
   * Created by monique on 16/08/17.
   */
-class DandelionIntegration @Inject() (ws: WSClient) extends Controller{
+class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) extends Controller{
 
   def extractEntities(text : String): Future[WSResponse] = {
 
@@ -22,7 +23,7 @@ class DandelionIntegration @Inject() (ws: WSClient) extends Controller{
 
     val include = "include=types &"
 
-    val token = "token=9efafad033534968b3ef537caff747d3"
+    val token = "token=" + config.get[String]("dandelion.token")
 
     val url = baseAddress + lang + textParam + include + token
 
