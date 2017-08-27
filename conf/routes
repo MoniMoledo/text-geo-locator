@@ -11,4 +11,4 @@ GET /versionedAssets/*file  controllers.Assets.versioned(file)
 
 GET     /swagger          controllers.ApiHelpController.getResources
 
-GET     /location/:text         controllers.Application.getLocationsByText(text)
+POST    /location     controllers.Application.getLocationsByText()
