@@ -1,6 +1,8 @@
 package integration
 
 import com.google.inject.Inject
+import commons.{GeoLevel, DandelionResult}
+import commons.GeoLevel.GeoLevel
 import play.api.Configuration
 import play.api.libs.json._
 import play.api.libs.ws.{WSClient, WSRequest, WSResponse}
@@ -34,7 +36,7 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
     return futureResult
   }
 
-  def jsonParser(text : String): (String, String) = {
+  def jsonParser(text : String): DandelionResult = {
 
     val json = Json.parse(text)
 
@@ -43,15 +45,15 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
     for(annotation <- annotations.value){
 
       val typeJsArray =  (annotation \\ "types")
-      val locationTitle = (annotation \ "title").as[String]
+      val locationTitle = (annotation \ "spot").as[String]
 
       for(typeValue <- typeJsArray) {
-        if(typeValue.toString().contains("City"))  return (locationTitle, "City")
-        if(typeValue.toString().contains("AdministrativeRegion")) return (locationTitle, "State")
-        if(typeValue.toString().contains("Country"))   return (locationTitle, "Country")
+        if(typeValue.toString().contains("City"))  return new DandelionResult(locationTitle, GeoLevel.City)
+        if(typeValue.toString().contains("AdministrativeRegion")) return new DandelionResult(locationTitle, GeoLevel.State)
+        if(typeValue.toString().contains("Country"))   return new DandelionResult(locationTitle, GeoLevel.Country)
       }
     }
 
-    return ("No place found", "Not a place")
+    return new DandelionResult("No place found", GeoLevel.Default)
   }
 }
