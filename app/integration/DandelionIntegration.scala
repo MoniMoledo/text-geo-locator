@@ -21,7 +21,8 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
 
     val lang = "?lang=pt &"
 
-    val textParam = "text=" + text + " &"
+    val maxLength = if (text.length < 2000) text.length else 2000
+    val textParam = "text=" + text.substring(0, maxLength)+ " &"
 
     val include = "include=types &"
 
@@ -45,7 +46,7 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
     for(annotation <- annotations.value){
 
       val typeJsArray =  (annotation \\ "types")
-      val locationTitle = (annotation \ "spot").as[String]
+      val locationTitle = (annotation \ "label").as[String]
 
       for(typeValue <- typeJsArray) {
         if(typeValue.toString().contains("City"))  return new DandelionResult(locationTitle, GeoLevel.City)
