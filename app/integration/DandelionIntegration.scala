@@ -1,12 +1,14 @@
 package integration
 
 import com.google.inject.Inject
-import commons.{GeoLevel, DandelionResult}
+import commons.GeoLevel.GeoLevel
+import commons.{DandelionResult, GeoLevel}
 import play.api.Configuration
 import play.api.libs.json._
 import play.api.libs.ws.{WSClient, WSRequest, WSResponse}
 import play.api.mvc.Controller
 
+import scala.collection.mutable.ListBuffer
 import scala.concurrent.Future
 
 /**
@@ -41,19 +43,31 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
     val json = Json.parse(text)
 
     val annotations = (json \ "annotations").as[JsArray]
+    var places = new ListBuffer[(JsValue, GeoLevel)]();
 
-    for(annotation <- annotations.value){
+    for(annotation <- annotations.value) {
 
-      val typeJsArray =  (annotation \\ "types")
-      val locationTitle = (annotation \ "label").as[String]
+      val typeJsArray = (annotation \\ "types")
 
-      for(typeValue <- typeJsArray) {
-        if(typeValue.toString().contains("City"))  return new DandelionResult(locationTitle, GeoLevel.City)
-        if(typeValue.toString().contains("AdministrativeRegion")) return new DandelionResult(locationTitle, GeoLevel.State)
-        if(typeValue.toString().contains("Country"))   return new DandelionResult(locationTitle, GeoLevel.Country)
+      val cities = typeJsArray.filter(_.toString().contains("City"))
+      val states = typeJsArray.filter(_.toString().contains("AdministrativeRegion"))
+      val countries = typeJsArray.filter(_.toString().contains("Country"))
+
+      if(cities.nonEmpty) {
+        places.append((annotation, GeoLevel.City))
+      }
+      else if(states.nonEmpty) {
+        places.append((annotation, GeoLevel.State))
+      }
+      else if(countries.nonEmpty) {
+        places.append((annotation, GeoLevel.Country))
       }
     }
 
+    if(places.nonEmpty){
+      val maxConfidencePlace = places.toList.maxBy(_._1.\("confidence").as[Float])
+      return new DandelionResult(maxConfidencePlace._1.\("label").as[String], maxConfidencePlace._2)
+    }
     return new DandelionResult("No place found", GeoLevel.Default)
   }
 }
