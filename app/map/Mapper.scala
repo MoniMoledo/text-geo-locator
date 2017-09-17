@@ -1,8 +1,7 @@
 package map
 
 import commons.{DandelionResult, GeoLevel}
-import commons.GeoLevel.GeoLevel
-import play.api.libs.json.{JsArray, JsValue, Json}
+import play.api.libs.json.{JsArray, JsValue}
 
 /**
   * Created by monique on 27/08/17.
@@ -18,6 +17,7 @@ class Mapper {
       case GeoLevel.City => return tagCity(name)
       case GeoLevel.State => return tagState(name)
       case GeoLevel.Country => return tagCountry(name)
+      case GeoLevel.Default => throw new Exception("No place was found")
     }
   }
 

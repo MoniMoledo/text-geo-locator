@@ -2,7 +2,6 @@ package integration
 
 import com.google.inject.Inject
 import commons.{GeoLevel, DandelionResult}
-import commons.GeoLevel.GeoLevel
 import play.api.Configuration
 import play.api.libs.json._
 import play.api.libs.ws.{WSClient, WSRequest, WSResponse}
