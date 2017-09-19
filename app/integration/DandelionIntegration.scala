@@ -59,7 +59,7 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
       else if(states.nonEmpty) {
         places.append((annotation, GeoLevel.State))
       }
-      else if(countries.nonEmpty) {
+      else if(countries.nonEmpty && annotation.\("label").as[String] == "Brasil") {
         places.append((annotation, GeoLevel.Country))
       }
     }
