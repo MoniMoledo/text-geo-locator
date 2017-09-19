@@ -1,8 +1,7 @@
 package map
 
-import commons.{DandelionResult, GeoLevel}
-import commons.GeoLevel.GeoLevel
-import play.api.libs.json.{JsArray, JsValue, Json}
+import commons.{DandelionResult, GeoLevel, PlaceNotFoundException, PlaceNotMappedException}
+import play.api.libs.json.{JsArray, JsValue}
 
 /**
   * Created by monique on 27/08/17.
@@ -18,6 +17,7 @@ class Mapper {
       case GeoLevel.City => return tagCity(name)
       case GeoLevel.State => return tagState(name)
       case GeoLevel.Country => return tagCountry(name)
+      case GeoLevel.Default => throw new PlaceNotFoundException("No place was found for the given text")
     }
   }
 
@@ -32,7 +32,7 @@ class Mapper {
       if (cityName.matches(name)) return cityProperties
     }
 
-    throw new Exception("City: " + name + " could not be tagged")
+    throw new PlaceNotMappedException("City: " + name + " could not be mapped")
   }
 
   @throws(classOf[Exception])
@@ -46,7 +46,7 @@ class Mapper {
       if (stateName.matches(name)) return stateProperties
     }
 
-    throw new Exception("State: " + name + " could not be tagged")
+    throw new PlaceNotMappedException("State: " + name + " could not be mapped")
   }
 
   @throws(classOf[Exception])
@@ -59,6 +59,6 @@ class Mapper {
       if (countryName.matches(name)) return countryProperties
     }
 
-    throw new Exception("Country: " + name + " could not be tagged")
+    throw new PlaceNotMappedException("Country: " + name + " could not be mapped")
   }
 }
