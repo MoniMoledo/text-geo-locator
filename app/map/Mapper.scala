@@ -8,7 +8,7 @@ import play.api.libs.json.{JsArray, JsValue}
   */
 class Mapper {
 
-
+  @throws(classOf[Exception])
   def geoTag(place : DandelionResult): JsValue = {
     val name = place.getPlaceName
     val level = place.getPlaceLevel

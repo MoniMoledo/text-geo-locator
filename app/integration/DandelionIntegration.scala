@@ -22,8 +22,10 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
 
     val lang = "?lang=pt &"
 
-    val maxLength = if (text.length < 1612) text.length else 1612
-    val textParam = "text=" + text.substring(0, maxLength) + "\" &"
+    val maxLength = if (text.length < 2000) text.length else 2000
+    val filteredText = text.substring(0, maxLength).replaceAll("[%#$]","")
+
+    val textParam = "text=" + filteredText + "\" &"
 
     val include = "include=types &"
 
