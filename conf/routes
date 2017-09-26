@@ -9,6 +9,4 @@
 GET /assets/*file           controllers.Assets.at(file)
 GET /versionedAssets/*file  controllers.Assets.versioned(file)
 
-GET     /swagger          controllers.ApiHelpController.getResources
-
 POST    /location     controllers.Application.getLocationsByText()
