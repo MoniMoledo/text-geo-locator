@@ -15,6 +15,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
        val text = request.body.\("text").get.toString()
        val futureResult = dandelion.extractEntities(text)
 
-       futureResult.map(extractedLocation => Ok(mapper.geoTag(dandelion.jsonParser(extractedLocation.body))))
+       futureResult.map(extractedLocation => Ok(mapper.geoTag(dandelion.parseDandelionResult(extractedLocation.body))))
    }
 }

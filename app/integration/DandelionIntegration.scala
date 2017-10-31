@@ -14,33 +14,39 @@ import scala.concurrent.Future
 /**
   * Created by monique on 16/08/17.
   */
-class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) extends Controller{
+class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) {
 
-  def extractEntities(text : String): Future[WSResponse] = {
+  def buildDandelionRequest(text: String): String = {
+
+    //Dandelion API only accepts short texts and doesn't support some special characters
+    val filteredText = removeSpecialCharacters(text).take(2500)
 
     val baseAddress = "https://api.dandelion.eu/datatxt/nex/v1/"
 
-    val lang = "?lang=pt &"
+    val portuguese = "pt"
 
-    val maxLength = if (text.length < 2000) text.length else 2000
-    val filteredText = text.substring(0, maxLength).replaceAll("[%#$]","")
+    val token = config.get[String]("dandelion.token")
 
-    val textParam = "text=" + filteredText + "\" &"
+    s"$baseAddress?lang=$portuguese &text=$filteredText &include=types &token=$token"
+  }
 
-    val include = "include=types &"
+  def extractEntities(text : String): Future[WSResponse] = {
 
-    val token = "token=" + config.get[String]("dandelion.token")
-
-    val url = baseAddress + lang + textParam + include + token
+    val url = buildDandelionRequest(text)
 
     val request: WSRequest = ws.url(url)
 
     val futureResult: Future[WSResponse] = request.get()
 
     return futureResult
+
   }
 
-  def jsonParser(text : String): DandelionResult = {
+  private def removeSpecialCharacters(text: String): String = {
+    text.replaceAll("[@#$%*]", "")
+  }
+
+  def parseDandelionResult(text : String): DandelionResult = {
 
     val json = Json.parse(text)
 
@@ -66,6 +72,7 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) exten
       }
     }
 
+    //TODO: If city can not be mapped, states and countries that could are wasted
     if(places.nonEmpty){
       val maxConfidencePlace = places.toList.maxBy(_._1.\("confidence").as[Float])
       return new DandelionResult(maxConfidencePlace._1.\("label").as[String], maxConfidencePlace._2)
