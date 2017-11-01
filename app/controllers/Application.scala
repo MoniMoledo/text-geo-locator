@@ -7,7 +7,7 @@ import play.api.mvc._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
- class Application @Inject() (mapper: Mapper, dandelion: DandelionIntegration) extends Controller {
+ class Application @Inject() (mapper: Mapper, dandelion: DandelionIntegration) extends InjectedController {
 
    def getLocationsByText() = Action.async(parse.json(maxLength = 1024 * 500)) {
 

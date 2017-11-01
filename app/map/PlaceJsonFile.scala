@@ -3,12 +3,10 @@ package map
 import java.io.File
 import java.nio.charset.{Charset, CodingErrorAction}
 
-import controllers.Assets
 import play.api.libs.json.{JsValue, Json}
 
-/**
-  * Created by monique on 27/08/17.
-  */
+import scala.io.Source
+
 object PlaceJsonFile {
 
   val cityJson: JsValue = Json.parse(loadSmallJSONFile(new File("public/data/br_city_hierarchy.json")))
@@ -21,6 +19,6 @@ object PlaceJsonFile {
   def loadSmallJSONFile(file: File): String = {
     val decoder = Charset.forName("UTF-8").newDecoder()
     decoder.onMalformedInput(CodingErrorAction.IGNORE)
-    scala.io.Source.fromFile(file)(decoder).getLines().mkString("\n")
+    Source.fromFile(file)(decoder).getLines().mkString("\n")
   }
 }

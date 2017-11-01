@@ -3,9 +3,6 @@ package map
 import commons.{DandelionResult, GeoLevel, PlaceNotFoundException, PlaceNotMappedException}
 import play.api.libs.json.{JsArray, JsValue}
 
-/**
-  * Created by monique on 27/08/17.
-  */
 class Mapper {
 
   @throws(classOf[Exception])
@@ -24,6 +21,7 @@ class Mapper {
   @throws(classOf[Exception])
   def tagCity(name: String): JsValue = {
 
+    //TODO use a HashSet of cities
     val cities = (PlaceJsonFile.cityJson \ "features").as[JsArray]
 
     for (city <- cities.value) {
