@@ -1,31 +1,31 @@
 { "type": "FeatureCollection",
 "features": [
-{"type":"Feature","properties":{"name":"Acre","stateID":12,"countryName":"Brazil","geoID":"12","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Rondônia","stateID":11,"countryName":"Brazil","geoID":"11","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Rio Grande do Sul","stateID":43,"countryName":"Brazil","geoID":"43","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Alagoas","stateID":27,"countryName":"Brazil","geoID":"27","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Sergipe","stateID":28,"countryName":"Brazil","geoID":"28","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Ceará","stateID":23,"countryName":"Brazil","geoID":"23","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Paraíba","stateID":25,"countryName":"Brazil","geoID":"25","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Rio Grande do Norte","stateID":24,"countryName":"Brazil","geoID":"24","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Espírito Santo","stateID":32,"countryName":"Brazil","geoID":"32","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Mato Grosso do Sul","stateID":50,"countryName":"Brazil","geoID":"50","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Roraima","stateID":14,"countryName":"Brazil","geoID":"14","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Pernambuco","stateID":26,"countryName":"Brazil","geoID":"26","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Bahia","stateID":29,"countryName":"Brazil","geoID":"29","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Piauí","stateID":22,"countryName":"Brazil","geoID":"22","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Rio de Janeiro","stateID":33,"countryName":"Brazil","geoID":"33","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Distrito Federal","stateID":53,"countryName":"Brazil","geoID":"53","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Mato Grosso","stateID":51,"countryName":"Brazil","geoID":"51","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Pará","stateID":15,"countryName":"Brazil","geoID":"15","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Amazonas","stateID":13,"countryName":"Brazil","geoID":"13","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Minas Gerais","stateID":31,"countryName":"Brazil","geoID":"31","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Santa Catarina","stateID":42,"countryName":"Brazil","geoID":"42","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Paraná","stateID":41,"countryName":"Brazil","geoID":"41","countryID":59470}}
-,{"type":"Feature","properties":{"name":"São Paulo","stateID":35,"countryName":"Brazil","geoID":"35","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Tocantins","stateID":17,"countryName":"Brazil","geoID":"17","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Goiás","stateID":52,"countryName":"Brazil","geoID":"52","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Amapá","stateID":16,"countryName":"Brazil","geoID":"16","countryID":59470}}
-,{"type":"Feature","properties":{"name":"Maranhão","stateID":21,"countryName":"Brazil","geoID":"21","countryID":59470}}
+ {"type":"Feature","properties":{"stateName":"Acre","stateID":12,"countryName":"Brazil","geoID":"12","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Rondônia","stateID":11,"countryName":"Brazil","geoID":"11","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Rio Grande do Sul","stateID":43,"countryName":"Brazil","geoID":"43","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Alagoas","stateID":27,"countryName":"Brazil","geoID":"27","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Sergipe","stateID":28,"countryName":"Brazil","geoID":"28","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Ceará","stateID":23,"countryName":"Brazil","geoID":"23","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Paraíba","stateID":25,"countryName":"Brazil","geoID":"25","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Rio Grande do Norte","stateID":24,"countryName":"Brazil","geoID":"24","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Espírito Santo","stateID":32,"countryName":"Brazil","geoID":"32","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Mato Grosso do Sul","stateID":50,"countryName":"Brazil","geoID":"50","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Roraima","stateID":14,"countryName":"Brazil","geoID":"14","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Pernambuco","stateID":26,"countryName":"Brazil","geoID":"26","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Bahia","stateID":29,"countryName":"Brazil","geoID":"29","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Piauí","stateID":22,"countryName":"Brazil","geoID":"22","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Rio de Janeiro","stateID":33,"countryName":"Brazil","geoID":"33","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Distrito Federal","stateID":53,"countryName":"Brazil","geoID":"53","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Mato Grosso","stateID":51,"countryName":"Brazil","geoID":"51","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Pará","stateID":15,"countryName":"Brazil","geoID":"15","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Amazonas","stateID":13,"countryName":"Brazil","geoID":"13","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Minas Gerais","stateID":31,"countryName":"Brazil","geoID":"31","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Santa Catarina","stateID":42,"countryName":"Brazil","geoID":"42","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Paraná","stateID":41,"countryName":"Brazil","geoID":"41","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"São Paulo","stateID":35,"countryName":"Brazil","geoID":"35","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Tocantins","stateID":17,"countryName":"Brazil","geoID":"17","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Goiás","stateID":52,"countryName":"Brazil","geoID":"52","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Amapá","stateID":16,"countryName":"Brazil","geoID":"16","countryID":59470}}
+,{"type":"Feature","properties":{"stateName":"Maranhão","stateID":21,"countryName":"Brazil","geoID":"21","countryID":59470}}
 ]
 }

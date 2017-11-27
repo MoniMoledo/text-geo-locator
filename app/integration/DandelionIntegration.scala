@@ -19,7 +19,7 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) {
   def buildDandelionRequest(text: String): String = {
 
     //Dandelion API only accepts short texts and doesn't support some special characters
-    val filteredText = removeSpecialCharacters(text).take(2500)
+    val filteredText = removeSpecialCharacters(text).take(2000)
 
     val baseAddress = "https://api.dandelion.eu/datatxt/nex/v1/"
 
@@ -43,7 +43,7 @@ class DandelionIntegration @Inject() (ws: WSClient, config: Configuration) {
   }
 
   private def removeSpecialCharacters(text: String): String = {
-    text.replaceAll("[@#$%*]", "")
+    text.replaceAll("[@#$%*&^]", "")
   }
 
   def parseDandelionResult(text : String): DandelionResult = {

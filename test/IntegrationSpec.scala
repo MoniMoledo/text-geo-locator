@@ -43,7 +43,7 @@ class IntegrationSpec extends Specification with Mockito {
         val configMock = mock[Configuration]
         configMock.get[String]("dandelion.token") returns "testToken"
         val result = Await.result(
-          new DandelionIntegration(client, configMock).extractEntities("Niterói@#$%*"), 10.seconds)
+          new DandelionIntegration(client, configMock).extractEntities("Niterói@#$%*!@#$%*(){}':;,./|`~"), 10.seconds)
         val annotation  = (Json.parse(result.body[String]) \ "annotations").as[JsArray]
         annotation.value(0).\("spot").as[String] must_== "Niterói"
       }

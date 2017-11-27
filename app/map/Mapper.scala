@@ -26,7 +26,7 @@ class Mapper {
 
     for (city <- cities.value) {
       val cityProperties = (city \ "properties").as[JsValue]
-      val cityName = (cityProperties \ "name").as[String]
+      val cityName = (cityProperties \ "cityName").as[String]
       if (cityName.matches(name)) return cityProperties
     }
 
@@ -40,8 +40,8 @@ class Mapper {
 
     for (state <- states.value) {
       val stateProperties = (state \ "properties").as[JsValue]
-      val stateName = (stateProperties \ "name").as[String]
-      if (stateName.matches(name)) return stateProperties
+      val stateName = (stateProperties \ "stateName").as[String]
+      if (stateName.matches(name)) { return stateProperties }
     }
 
     throw new PlaceNotMappedException("State: " + name + " could not be mapped")
@@ -53,7 +53,7 @@ class Mapper {
 
     for (country <- countries.value) {
       val countryProperties = (country \ "properties").as[JsValue]
-      val countryName = (countryProperties \ "name").as[String]
+      val countryName = (countryProperties \ "countryName").as[String]
       if (countryName.matches(name)) return countryProperties
     }
 
