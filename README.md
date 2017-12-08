@@ -75,5 +75,5 @@ You can run the following command in a separate command line window:
 
 * Currently, there is support only for texts in Portuguese.
 * Currently, there is support only for cities and states of Brazil.
-* Currently, there is support only for shorts texts, location will be searched only for the first 2000 caracters.
+* Currently, there is support only for shorts texts, location will be searched only for the first 2000 characters.
 * Users and developers are welcome to contact me through moniquemoledo@id.uff.br
